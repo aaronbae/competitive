@@ -1,1 +1,1 @@
-# hashcode-2019
+# Competitive Coding Challenges
