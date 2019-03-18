@@ -1,5 +1,19 @@
+"""
+Pizza.py
+===========================================================
+The the data structure to easily access the Pizza object.
+"""
+
 class Pizza:
     def __init__(self, file_name):
+        """
+        The constructor
+
+        Parameters
+        ----------
+        file_name
+            A string indicating the name of the file that has the input file.
+        """
         input_file = open(file_name, "r")
 
         # Extracting condition information
@@ -18,20 +32,50 @@ class Pizza:
         self.next_slice_index = 1
 
     def ingredient_map():
+        """
+        The access method to return a copy of the current ingredient_map
+        """
         return self.ingredient_map[:][:]
 
     # returns either 'T' or 'M'
     def check_content(self, row, col):
+        """
+        The access method to return the content of the ingredient at that grid
+
+        Parameters
+        ----------
+        row
+            the integer representation of the row where the user wishes to query
+        col
+            the integer representation of the column where the user wishes to query
+        """
         print(self.ingredient_map[row][col])
 
     # prints the string representation of the pizza status
     def print(self):
+        """
+        The client method to print out the current status of the ingredient map
+        """
         print(str(self.row) +" x "+str(self.col) + "\t\tMin: "+str(self.min_ingredient)+"\t\tMax: "+str(self.max_cell_per_slice))
         for index, row in enumerate(self.ingredient_map):
             print(row+'\t\t'+', '.join(str(x) for x in self.loc_to_index[index]))
 
     # Cuts a slice
     def slice(self, r1, r2, c1, c2):
+        """
+        The mutator method to create a new slice of the Pizza
+
+        Parameters
+        ----------
+        r1
+            the row coordinate of the top-left corner of the pizza
+        r2
+            the row coordinate of the bottom-right corner of the pizza
+        c1
+            the column coordinate of the top-left corner of the pizza
+        c2
+            the column coordinate of the bottom-right corner of the pizza
+        """
         try:
             m_count = 0
             t_count = 0
@@ -78,10 +122,21 @@ class Pizza:
 
     # shows the indices of the current slices
     def curr_slices(self):
+        """
+        The accessor method to return the list of slices that the pizza currently has
+        """
         return self.index_to_locs.keys()
 
     # removes the slices
     def unslice(self, slice_index):
+        """
+        The mutator method to return the slice back into the available pool of pizza squares
+
+        Parameters
+        ----------
+        slice_index
+            the unique index of the slice to be unsliced
+        """
         # invalid slice_index
         if str(slice_index) not in self.index_to_locs:
             print("Slice Index does not exist! " + str(slice_index))
@@ -98,6 +153,14 @@ class Pizza:
 
     # saves the current set of slices to recommended file
     def save_to_file(self, file_name):
+        """
+        The method creates the output file that the Hash Code scoring function can understand
+
+        Parameters
+        -----------
+        file_name
+            the name of the file that the output should have
+        """
         list_of_slice_indices = self.curr_slices()
 
         # create file
