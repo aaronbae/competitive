@@ -16,3 +16,8 @@ Here is a blob from the official Hash Code Team of Google:
     Round."
 
     -- Google Hash Code Team
+
+.. automodule:: hashcode.pizza_challenge.Pizza
+    :members:
+    :undoc-members:
+    :show-inheritance:
