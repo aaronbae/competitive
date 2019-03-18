@@ -1,0 +1,4 @@
+3 slices.
+Slice between rows (0,2) and columns (0,1).
+Slice between rows (0,2) and columns (2,2).
+Slice between rows (0,2) and columns (3,4).
